@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Webcam from "react-webcam";
 import * as faceapi from "face-api.js";
-const modelsPath = "/models";
+const modelsPath = `${process.env.PUBLIC_URL || "/facial-rec-app"}/models`;
 
 export default function WebcamFeed() {
   const [isWebcamActive, setIsWebcamActive] = useState(false);
