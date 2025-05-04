@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Webcam from "react-webcam";
 import * as faceapi from "face-api.js";
+const modelsPath = "/models";
 
 export default function WebcamFeed() {
   const [isWebcamActive, setIsWebcamActive] = useState(false);
@@ -10,10 +11,11 @@ export default function WebcamFeed() {
   useEffect(() => {
     // Load the face detection model when the component mounts
     const loadModels = async () => {
-      await faceapi.nets.tinyFaceDetector.loadFromUri("/models");
-      await faceapi.nets.faceLandmark68Net.loadFromUri("/models");
-      await faceapi.nets.faceExpressionNet.loadFromUri("/models");
-      await faceapi.nets.ageGenderNet.loadFromUri("/models");
+      
+      await faceapi.nets.tinyFaceDetector.loadFromUri(modelsPath);
+      await faceapi.nets.faceLandmark68Net.loadFromUri(modelsPath);
+      await faceapi.nets.faceExpressionNet.loadFromUri(modelsPath);
+      await faceapi.nets.ageGenderNet.loadFromUri(modelsPath);
       console.log("Face detection model loaded.");
     };
 
